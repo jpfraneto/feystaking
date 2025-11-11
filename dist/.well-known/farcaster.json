@@ -1,0 +1,17 @@
+{
+  "accountAssociation": {
+    "header": "eyJmaWQiOjk3MTU2NCwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDcxNGZDOTI5MjFGQkQwNDAyNTFDZjI1NDgyRjJkZUE2ZTM5MTg2N0MifQ",
+    "payload": "eyJkb21haW4iOiJmZXlzdGFraW5nLm9yYml0ZXIud2Vic2l0ZSJ9",
+    "signature": "MHhiMjMzZGFkNzIwZDRkYjg2MjNkZGVkZDM3ODE5NGExYjU2ODg4YjQzYzdlNWJkY2JhZWFhYTFjM2Q4NmY3N2I2MzY1MDcyNTFkMmY0NjkyMGMzZTI4MTdjNmViNWU5YmZkNmNjZTVjM2QxYzJiMjM1Mjk3NDRjMjQ0NmZiZTI2NDFj"
+  },
+  "frame": {
+    "version": "1",
+    "name": "feystaking",
+    "iconUrl": "https://feystaking.orbiter.website/icon.png",
+    "homeUrl": "https://feystaking.orbiter.website",
+    "imageUrl": "https://feystaking.orbiter.website/image.png",
+    "buttonTitle": "Launch",
+    "splashImageUrl": "https://feystaking.orbiter.website/splash.png",
+    "splashBackgroundColor": "#000000"
+  }
+}

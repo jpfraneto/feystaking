@@ -1,0 +1,354 @@
+/**
+ * FEY Protocol Staking Interface - Global Styles
+ * 
+ * This file contains the global styles for the cyberpunk-themed
+ * FEY Protocol staking interface including custom animations,
+ * effects, and overrides.
+ */
+
+@import "tailwindcss";
+
+/* =============================================================================
+   CYBERPUNK THEME VARIABLES
+   ============================================================================= */
+
+:root {
+  --neon-green: #00ff41;
+  --neon-green-dim: #22c55e;
+  --neon-green-bright: #10ff50;
+  --terminal-bg: #000000;
+  --terminal-grid: #001100;
+  
+  /* Glow effects */
+  --glow-sm: 0 0 5px var(--neon-green);
+  --glow-md: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+  --glow-lg: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green), 0 0 40px var(--neon-green);
+}
+
+/* =============================================================================
+   GLOBAL STYLES
+   ============================================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  /* Prevent zoom on mobile */
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', monospace;
+  background-color: var(--terminal-bg);
+  color: var(--neon-green);
+  overflow-x: hidden;
+  
+  /* Enhance text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* =============================================================================
+   CYBERPUNK GRID BACKGROUND
+   ============================================================================= */
+
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: grid-pulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes grid-pulse {
+  0% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+/* =============================================================================
+   CUSTOM ANIMATIONS
+   ============================================================================= */
+
+/* Spinning animations for loading spinners */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes reverse-spin {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-reverse-spin {
+  animation: reverse-spin 1.5s linear infinite;
+}
+
+/* Glow pulse animation */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: var(--glow-sm);
+  }
+  50% {
+    box-shadow: var(--glow-lg);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Text glitch effect */
+@keyframes text-glitch {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-2px);
+  }
+  40% {
+    transform: translateX(2px);
+  }
+  60% {
+    transform: translateX(-1px);
+  }
+  80% {
+    transform: translateX(1px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-text-glitch {
+  animation: text-glitch 0.3s ease-in-out;
+}
+
+/* Terminal cursor blink */
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+/* =============================================================================
+   COMPONENT OVERRIDES
+   ============================================================================= */
+
+/* Input fields with terminal styling */
+input[type="text"],
+input[type="number"] {
+  background-color: transparent !important;
+  border: 1px solid rgba(34, 197, 94, 0.5);
+  color: var(--neon-green-dim);
+  font-family: 'Courier New', monospace;
+  transition: all 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: var(--neon-green);
+  box-shadow: var(--glow-sm);
+  outline: none;
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+  color: rgba(34, 197, 94, 0.5);
+}
+
+/* Button enhancements */
+button {
+  font-family: 'Courier New', monospace;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Add subtle glow to interactive elements */
+button:not(:disabled):hover {
+  box-shadow: var(--glow-sm);
+}
+
+/* Links */
+a {
+  color: var(--neon-green-dim);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--neon-green-bright);
+  text-shadow: var(--glow-sm);
+}
+
+/* =============================================================================
+   UTILITY CLASSES
+   ============================================================================= */
+
+/* Glow utilities */
+.glow-sm {
+  box-shadow: var(--glow-sm);
+}
+
+.glow-md {
+  box-shadow: var(--glow-md);
+}
+
+.glow-lg {
+  box-shadow: var(--glow-lg);
+}
+
+/* Text glow */
+.text-glow {
+  text-shadow: var(--glow-sm);
+}
+
+/* Terminal border */
+.terminal-border {
+  border: 1px solid var(--neon-green);
+  position: relative;
+}
+
+.terminal-border::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 1px solid var(--neon-green);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Scanlines effect */
+.scanlines {
+  position: relative;
+}
+
+.scanlines::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    transparent 50%, 
+    rgba(0, 255, 65, 0.03) 50%
+  );
+  background-size: 100% 2px;
+  pointer-events: none;
+  animation: scanlines 0.1s linear infinite;
+}
+
+@keyframes scanlines {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(2px);
+  }
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .bg-grid-pattern {
+    background-size: 15px 15px;
+  }
+}
+
+/* =============================================================================
+   ACCESSIBILITY
+   ============================================================================= */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .bg-grid-pattern {
+    animation: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --neon-green: #00ff00;
+    --neon-green-dim: #00dd00;
+    --neon-green-bright: #00ff00;
+  }
+}
+
+/* =============================================================================
+   FOCUS MANAGEMENT
+   ============================================================================= */
+
+/* Ensure focus is visible for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid var(--neon-green);
+  outline-offset: 2px;
+}
+
+/* Remove default focus styles */
+*:focus:not(:focus-visible) {
+  outline: none;
+}

@@ -1,0 +1,6 @@
+{
+  "siteId": "8c610bc0-9ff6-4278-ac97-04fde9af4d14",
+  "domain": "feystaking",
+  "buildCommand": "bun run build",
+  "buildDir": "dist"
+}
