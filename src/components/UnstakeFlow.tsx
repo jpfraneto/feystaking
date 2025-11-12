@@ -9,7 +9,7 @@
  */
 
 import { useState, useEffect } from "react";
-import { ArrowLeft, AlertCircle, CheckCircle, TrendingUp } from "lucide-react";
+import { ArrowLeft, AlertCircle, CheckCircle } from "lucide-react";
 import clsx from "clsx";
 
 import { UserBalances } from "../hooks/useFeyProtocol";
@@ -20,7 +20,6 @@ import {
   parseTokenAmount,
   sanitizeNumberInput,
   isValidNumberInput,
-  formatPercentageChange,
 } from "../utils/formatting";
 import { getExplorerTxUrl } from "../config/wagmi";
 import LoadingSpinner from "./LoadingSpinner";
@@ -109,16 +108,6 @@ export default function UnstakeFlow({ onBack, balances }: UnstakeFlowProps) {
       ? (balances.feyValue * unstakeAmountWei) / balances.xFeyBalance
       : 0n;
 
-  // Calculate gain/loss
-  const gainLoss =
-    unstakeAmountWei > 0n && expectedFeyAmount > unstakeAmountWei
-      ? formatPercentageChange(
-          ((Number(expectedFeyAmount) - Number(unstakeAmountWei)) /
-            Number(unstakeAmountWei)) *
-            100
-        )
-      : null;
-
   // Validation
   const isValidAmount =
     unstakeAmountWei > 0n &&
@@ -192,21 +181,6 @@ export default function UnstakeFlow({ onBack, balances }: UnstakeFlowProps) {
                   {formatFeyAmount(expectedFeyAmount)} FEY
                 </span>
               </div>
-
-              {gainLoss && (
-                <div
-                  className={clsx(
-                    "flex items-center justify-center gap-1 text-[9px]",
-                    gainLoss.isPositive ? "text-green-300" : "text-red-400"
-                  )}
-                >
-                  <TrendingUp size={10} />
-                  <span>
-                    {gainLoss.prefix}
-                    {gainLoss.text} gain
-                  </span>
-                </div>
-              )}
             </div>
           )}
         </div>
@@ -325,12 +299,6 @@ export default function UnstakeFlow({ onBack, balances }: UnstakeFlowProps) {
             {formatFeyAmount(expectedFeyAmount)} FEY
           </span>
         </div>
-        {gainLoss && gainLoss.isPositive && (
-          <div className="flex justify-between text-[9px] text-green-300">
-            <span>Rewards:</span>
-            <span>+{gainLoss.text}</span>
-          </div>
-        )}
       </div>
 
       {unstaking.txHash && (

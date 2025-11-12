@@ -7,26 +7,26 @@ A cyberpunk-themed Farcaster miniapp for staking FEY tokens and earning protocol
 ## 🌟 Overview
 
 The FEY Protocol Staking Interface allows users to:
+
 - **Stake FEY tokens** and receive xFEY shares representing vault ownership
 - **Earn protocol fees** from all tokens launched through FEY Protocol (20% of trading fees)
 - **Unstake anytime** to receive FEY + accumulated rewards
-- **Track real-time APY** (~34.2% current rate)
-- **Monitor staking stats** (80%+ of supply currently staked)
 
 ## 🏗️ Architecture
 
 ### Smart Contracts (Base Network)
 
-| Contract | Address | Purpose |
-|----------|---------|---------|
-| **FEY Token** | `0xD09cf0982A32DD6856e12d6BF2F08A822eA5D91D` | ERC20 token for staking |
-| **xFeyVault** | `0x72f5565Ab147105614ca4Eb83ecF15f751Fd8C50` | ERC4626 staking vault |
-| **Factory** | `0x5B409184204b86f708d3aeBb3cad3F02835f68cC` | Protocol factory (fee source) |
-| **FeyFeeLocker** | `0xf739FC4094F3Df0a1Be08E2925b609F3C3Aa13c6` | Temporary fee storage |
+| Contract         | Address                                      | Purpose                       |
+| ---------------- | -------------------------------------------- | ----------------------------- |
+| **FEY Token**    | `0xD09cf0982A32DD6856e12d6BF2F08A822eA5D91D` | ERC20 token for staking       |
+| **xFeyVault**    | `0x72f5565Ab147105614ca4Eb83ecF15f751Fd8C50` | ERC4626 staking vault         |
+| **Factory**      | `0x5B409184204b86f708d3aeBb3cad3F02835f68cC` | Protocol factory (fee source) |
+| **FeyFeeLocker** | `0xf739FC4094F3Df0a1Be08E2925b609F3C3Aa13c6` | Temporary fee storage         |
 
 ### How Staking Works
 
 1. **Staking (FEY → xFEY)**:
+
    - User approves xFeyVault to spend FEY tokens
    - User calls `deposit(assets, receiver)` on vault
    - Vault mints xFEY shares proportional to deposit
@@ -140,13 +140,14 @@ Update contract addresses in `src/config/contracts.ts`:
 
 ```typescript
 // Base Network (Chain ID: 8453)
-export const FEY_TOKEN_ADDRESS = '0xD09cf0982A32DD6856e12d6BF2F08A822eA5D91D';
-export const XFEY_VAULT_ADDRESS = '0x72f5565Ab147105614ca4Eb83ecF15f751Fd8C50';
+export const FEY_TOKEN_ADDRESS = "0xD09cf0982A32DD6856e12d6BF2F08A822eA5D91D";
+export const XFEY_VAULT_ADDRESS = "0x72f5565Ab147105614ca4Eb83ecF15f751Fd8C50";
 ```
 
 ### Farcaster Manifest
 
 The manifest is located at `public/.well-known/farcaster.json` and includes:
+
 - App metadata (name, description, icons)
 - Required blockchain capabilities
 - Account association for verification
@@ -187,11 +188,13 @@ npm run preview
 The app can be deployed to any static hosting provider:
 
 **Popular Options:**
+
 - **Vercel**: `npm i -g vercel && vercel`
 - **Netlify**: Drag `dist` folder to Netlify
 - **GitHub Pages**: Enable in repo settings
 
 **Requirements:**
+
 - Serve `/.well-known/farcaster.json` correctly
 - HTTPS enabled (required by Farcaster)
 - Proper MIME types for all files
@@ -209,7 +212,6 @@ The app can be deployed to any static hosting provider:
 
 - **Audited Contracts**: Uses standard ERC20 and ERC4626 implementations
 - **No Custom Logic**: Minimal custom code reduces attack surface
-- **Established Protocol**: FEY Protocol is battle-tested
 
 ### Frontend Security
 
@@ -239,8 +241,9 @@ The app can be deployed to any static hosting provider:
 ### Adding New Features
 
 When adding features:
+
 1. **Update type definitions** in hooks and components
-2. **Add loading states** for all async operations  
+2. **Add loading states** for all async operations
 3. **Include error handling** for all failure cases
 4. **Test on multiple devices** including mobile
 5. **Update documentation** as needed
@@ -248,16 +251,19 @@ When adding features:
 ## 📚 Resources
 
 ### FEY Protocol
+
 - **Contract Explorer**: [Base Scan](https://basescan.org)
-- **Protocol Docs**: [FEY Protocol Documentation]
-- **Community**: [FEY Discord/Telegram]
+- **Protocol Docs**: [FEY Protocol Documentation](https://fey.money)
+- **Community**: [FEY Discord/Telegram](https://discord.gg/xdDT9nGX)
 
 ### Farcaster Development
+
 - **Miniapp Docs**: [https://docs.farcaster.xyz/developers/miniapps](https://docs.farcaster.xyz/developers/miniapps)
 - **SDK Reference**: [Farcaster SDK](https://github.com/farcasterxyz/miniapps)
 - **Developer Portal**: [https://warpcast.com/~/developers](https://warpcast.com/~/developers)
 
 ### Technical Documentation
+
 - **Wagmi**: [https://wagmi.sh](https://wagmi.sh)
 - **Viem**: [https://viem.sh](https://viem.sh)
 - **ERC4626**: [EIP-4626 Standard](https://eips.ethereum.org/EIPS/eip-4626)
@@ -268,21 +274,25 @@ When adding features:
 ### Common Issues
 
 **"Wallet not connecting"**
+
 - Ensure you're using a Farcaster client with wallet support
 - Try refreshing the miniapp
 - Check that Base network is supported
 
 **"Transaction failing"**
+
 - Verify sufficient FEY balance for staking
 - Check that you have enough ETH for gas fees
 - Ensure proper approval before staking
 
 **"Balances not updating"**
+
 - Wait for transaction confirmation (2-3 blocks on Base)
 - Refresh the app if balances seem stuck
 - Check transaction on [Base Scan](https://basescan.org)
 
 **"App not loading"**
+
 - Check browser console for errors
 - Ensure all dependencies are installed: `npm install`
 - Verify Node.js version is 22.11.0+
@@ -299,13 +309,10 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgments
 
-- **FEY Protocol Team** for creating the staking infrastructure
-- **Farcaster Team** for the miniapp platform and tools  
-- **Base Team** for the L2 network and development resources
-- **Community Contributors** for testing and feedback
+- **FEY Protocol Team** for creating the protocol. [@wiz](https://farcaster.xyz/wiz) and [@atareh](https://farcaster.xyz/atareh)
 
 ---
 
 **Built with ❤️ for the Farcaster ecosystem**
 
-*Stake FEY, earn protocol fees, enjoy the cyberpunk aesthetic!*
+_FEY: CREATE. BUILD. OWN_
