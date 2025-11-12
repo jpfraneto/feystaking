@@ -1,8 +1,8 @@
 {
   "accountAssociation": {
-    "header": "eyJmaWQiOjk3MTU2NCwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDcxNGZDOTI5MjFGQkQwNDAyNTFDZjI1NDgyRjJkZUE2ZTM5MTg2N0MifQ",
-    "payload": "eyJkb21haW4iOiJmZXlzdGFraW5nLm9yYml0ZXIud2Vic2l0ZSJ9",
-    "signature": "MHhiMjMzZGFkNzIwZDRkYjg2MjNkZGVkZDM3ODE5NGExYjU2ODg4YjQzYzdlNWJkY2JhZWFhYTFjM2Q4NmY3N2I2MzY1MDcyNTFkMmY0NjkyMGMzZTI4MTdjNmViNWU5YmZkNmNjZTVjM2QxYzJiMjM1Mjk3NDRjMjQ0NmZiZTI2NDFj"
+    "header": "eyJmaWQiOjE2MDk4LCJ0eXBlIjoiY3VzdG9keSIsImtleSI6IjB4YUIyMERlOGY1QTRmOGUxNDdCYWFDOUQxZjZlMjM2ODYxNDg1NTE2QSJ9",
+    "payload": "eyJkb21haW4iOiJmZXlzdGFraW5nLmxhdCJ9",
+    "signature": "L9A3tjpbJLdkYeWqmsCEH6RWax20brpwAy+zGaLgZHgCJGAAMJAsYNHvfUuyoKPr+Dgvhz/H4nRifHKJex10ABs="
   },
   "miniapp": {
     "version": "1",
@@ -10,24 +10,17 @@
     "iconUrl": "https://feystaking.lat/icon.png",
     "homeUrl": "https://feystaking.lat",
     "imageUrl": "https://feystaking.lat/image.png",
-    "buttonTitle": "🚀 Stake FEY",
+    "buttonTitle": "Stake FEY",
     "splashImageUrl": "https://feystaking.lat/splash.gif",
+    "webhookUrl": "https://api.neynar.com/f/app/0b8a4d75-3409-44af-b28c-60d137fe4d80/event",
     "splashBackgroundColor": "#000000",
-    "description": "Stake FEY & earn protocol fees",
+    "description": "Stake FEY and earn protocol fees",
     "subtitle": "Earn Protocol Fees on Base",
-    "primaryCategory": "defi",
-    "tags": [
-      "staking",
-      "defi",
-      "base",
-      "yield",
-      "protocol-fees",
-      "erc4626",
-      "fey"
-    ],
+    "primaryCategory": "finance",
+    "tags": ["staking", "defi", "base", "yield", "fey"],
     "tagline": "Stake FEY, Earn Protocol Fees",
-    "ogTitle": "FEY Protocol Staking - Earn 34% APY",
-    "ogDescription": "Stake FEY tokens in the xFeyVault and earn 20% of all trading fees from tokens launched through FEY Protocol on Base network.",
+    "ogTitle": "FEY Protocol Staking",
+    "ogDescription": "Stake FEY and earn from all trading fees from new tokens launched via FEY Protocol.",
     "ogImageUrl": "https://feystaking.lat/image.png",
     "requiredChains": ["eip155:8453"],
     "requiredCapabilities": ["actions.ready", "wallet.getEthereumProvider"]

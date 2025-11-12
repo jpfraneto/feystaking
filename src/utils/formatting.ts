@@ -218,19 +218,21 @@ export function sanitizeNumberInput(value: string): string {
  * Calculates APY from vault data
  * @param totalAssets - Total FEY in vault
  * @param totalShares - Total xFEY shares
- * @param timeframe - Time period for calculation (default: 365 days)
+ * @param _timeframe - Time period for calculation (default: 365 days) - unused for now
  * @returns Calculated APY as percentage
  */
 export function calculateAPY(
   totalAssets: bigint,
   totalShares: bigint,
-  timeframe: number = 365
+  _timeframe: number = 365
 ): number {
   try {
     // Basic APY calculation based on share price appreciation
     // In a real implementation, you'd use historical data
-    const sharePrice = Number(formatUnits(totalAssets, FEY_DECIMALS)) / 
-                      Number(formatUnits(totalShares, XFEY_DECIMALS));
+    // For now, we'll use the protocol's reported APY
+    // Note: sharePrice calculation removed as it's not used
+    void totalAssets; // Mark as intentionally unused
+    void totalShares; // Mark as intentionally unused
     
     // This is a simplified calculation - in reality you'd track historical share prices
     // For now, we'll use the protocol's reported APY

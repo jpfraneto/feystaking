@@ -8,11 +8,10 @@
 
 import { useAccount, useReadContract, useReadContracts, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
 import { useState, useMemo } from 'react';
-import { Address, formatUnits } from 'viem';
+import { formatUnits } from 'viem';
 import {
   FEY_TOKEN_CONFIG,
   XFEY_VAULT_CONFIG,
-  FEY_TOKEN_ADDRESS,
   XFEY_VAULT_ADDRESS,
   MAX_UINT256,
   FEY_DECIMALS,
@@ -432,13 +431,6 @@ export function useFeyUnstaking() {
       console.error('Unstaking failed:', error);
     }
   };
-
-  // Preview how much FEY will be received
-  const { data: previewAmount } = useReadContract({
-    ...XFEY_VAULT_CONFIG,
-    functionName: 'previewRedeem',
-    args: [0n], // Will be updated when called with actual amount
-  });
 
   const previewUnstake = async (shares: bigint): Promise<bigint> => {
     // This would use the previewRedeem function

@@ -28,9 +28,9 @@ export default function WalletConnect() {
   // If already connected, show connected state
   if (isConnected && address) {
     return (
-      <div className="border border-green-400 rounded p-4 bg-green-900/10 text-center">
-        <p className="text-sm opacity-60 mb-2">WALLET CONNECTED</p>
-        <p className="font-mono text-xs text-green-300">
+      <div className="border border-green-400 rounded p-2 bg-green-900/10 text-center">
+        <p className="text-xs opacity-60 mb-1">WALLET CONNECTED</p>
+        <p className="font-mono text-[10px] text-green-300">
           {address.slice(0, 6)}...{address.slice(-4)}
         </p>
       </div>
@@ -38,12 +38,12 @@ export default function WalletConnect() {
   }
 
   return (
-    <div className="text-center space-y-6">
+    <div className="text-center space-y-2">
       {/* Terminal-style header */}
-      <div className="border border-green-400 rounded p-4 bg-green-900/10">
-        <h2 className="text-lg font-bold mb-2">WALLET ACCESS REQUIRED</h2>
-        <p className="text-sm opacity-80">
-          Connect your wallet to start staking FEY tokens and earning protocol fees
+      <div className="border border-green-400 rounded p-2 bg-green-900/10">
+        <h2 className="text-sm font-bold mb-1">WALLET ACCESS REQUIRED</h2>
+        <p className="text-xs opacity-80">
+          Connect your wallet to start staking FEY tokens
         </p>
       </div>
 
@@ -52,11 +52,11 @@ export default function WalletConnect() {
         onClick={handleConnect}
         disabled={isPending || isConnecting}
         className={clsx(
-          'w-full border border-green-400 rounded px-6 py-4',
+          'w-full border border-green-400 rounded px-3 py-2',
           'hover:bg-green-400/10 active:bg-green-400/20',
           'disabled:opacity-50 disabled:cursor-not-allowed',
           'transition-colors duration-200',
-          'font-bold text-sm tracking-wide'
+          'font-bold text-xs tracking-wide'
         )}
       >
         {isPending || isConnecting ? (
@@ -71,20 +71,18 @@ export default function WalletConnect() {
 
       {/* Error display */}
       {error && (
-        <div className="border border-red-400 rounded p-3 bg-red-900/10 text-red-400">
-          <p className="text-xs font-mono">ERROR: {error.message}</p>
+        <div className="border border-red-400 rounded p-1.5 bg-red-900/10 text-red-400">
+          <p className="text-[10px] font-mono">ERROR: {error.message}</p>
         </div>
       )}
 
       {/* Information about the protocol */}
-      <div className="border border-green-400/30 rounded p-4 text-xs opacity-60">
-        <h3 className="font-bold mb-2">About FEY Protocol Staking:</h3>
-        <ul className="space-y-1 text-left">
-          <li>• Stake FEY tokens to receive xFEY shares</li>
-          <li>• Earn 20% of all protocol trading fees</li>
-          <li>• Current APY: ~34.2%</li>
-          <li>• Unstake anytime to receive FEY + rewards</li>
-          <li>• All transactions happen on Base network</li>
+      <div className="border border-green-400/30 rounded p-2 text-[9px] opacity-60">
+        <h3 className="font-bold mb-1">About FEY Protocol:</h3>
+        <ul className="space-y-0.5 text-left">
+          <li>• Stake FEY → receive xFEY shares</li>
+          <li>• Earn 20% of protocol trading fees</li>
+          <li>• Unstake anytime for FEY + rewards</li>
         </ul>
       </div>
     </div>

@@ -232,11 +232,3 @@ export const MAX_UINT256 = 2n ** 256n - 1n;
 // Minimum amounts for validation
 export const MIN_STAKE_AMOUNT = 1000000000000000n; // 0.001 FEY
 export const MIN_UNSTAKE_AMOUNT = 1000000000000000n; // 0.001 xFEY
-
-// Protocol stats (can be updated dynamically)
-export const PROTOCOL_STATS = {
-  CURRENT_APY: 34.2, // %
-  STAKED_PERCENTAGE: 80.11, // %
-  MARKET_CAP: 6100000, // $6.1M
-  FEY_PRICE: 0.0046, // $0.0046
-} as const;

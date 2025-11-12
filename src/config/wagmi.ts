@@ -9,7 +9,11 @@
 import { http, createConfig } from 'wagmi';
 import { base } from 'wagmi/chains';
 import { farcasterMiniApp as miniAppConnector } from '@farcaster/miniapp-wagmi-connector';
-import { CHAIN_ID, BASE_RPC, BASE_RPC_BACKUP } from './contracts';
+import { CHAIN_ID, BASE_RPC } from './contracts';
+
+// Ensure SDK is available for the connector
+// The connector uses sdk.wallet.getEthereumProvider() internally
+import '@farcaster/miniapp-sdk';
 
 // =============================================================================
 // WAGMI CONFIGURATION
@@ -22,20 +26,16 @@ import { CHAIN_ID, BASE_RPC, BASE_RPC_BACKUP } from './contracts';
  * - Base network only (where FEY Protocol is deployed)
  * - Farcaster miniapp connector for seamless wallet integration
  * - Fallback RPC providers for reliability
+ * 
+ * Note: The Farcaster connector automatically uses sdk.wallet.getEthereumProvider()
+ * and should work seamlessly once the SDK is initialized in the app.
  */
 export const config = createConfig({
   chains: [base],
   connectors: [
     // Farcaster miniapp connector - handles wallet connection automatically
-    miniAppConnector({
-      // Optional: customize connector behavior
-      metadata: {
-        name: 'FEY Protocol Staking',
-        description: 'Stake FEY tokens and earn protocol fees',
-        url: 'https://your-domain.com', // Replace with your actual domain
-        icons: ['https://your-domain.com/icon.png'], // Replace with your icon
-      },
-    }),
+    // This connector uses the SDK's Ethereum provider internally
+    miniAppConnector(),
   ],
   transports: {
     [base.id]: http(BASE_RPC, {
@@ -51,6 +51,8 @@ export const config = createConfig({
   },
   // Polling interval for real-time updates
   pollingInterval: 4000,
+  // Disable auto-connect to prevent errors before SDK is ready
+  ssr: false,
 });
 
 // =============================================================================
